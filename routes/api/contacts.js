@@ -4,11 +4,11 @@ const ctrl = require("../../controllers/contacts");
 
 const {ctrlWrapper} = require('../../helpers');
 
-// const {validationBody} = require('../../middlewares');
+const {validationBody} = require('../../middlewares');
 
-// const schemas = require('../../schemas/contacts')
+const schemas = require('../../schemas/contacts')
 
-// const { json } = require("express");
+const { json } = require("express");
 
 const router = express.Router();
 
