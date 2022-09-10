@@ -4,7 +4,7 @@ const ctrl = require("../../controllers/contacts");
 
 const { ctrlWrapper } = require("../../helpers");
 
-const { validationBody, isValidId } = require("../../middlewares");
+const { authenticate, validationBody, isValidId } = require("../../middlewares");
 
 const { schemas } = require("../../models/contacts");
 
@@ -12,12 +12,13 @@ const { json } = require("express");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.listContacts));
+router.get("/", authenticate, ctrlWrapper(ctrl.listContacts));
 
 router.get("/:id", isValidId, ctrlWrapper(ctrl.getContactById));
 
 router.post(
   "/",
+  authenticate,
   validationBody(schemas.addSchema),
   ctrlWrapper(ctrl.addContact)
 );

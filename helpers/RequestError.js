@@ -1,7 +1,7 @@
 const RequestError = (status, message) => {
-    const error = new Error('Not found');
-    error.status = 404;
-    return error
+    const error = new Error(message);
+    error.status = status;
+    return error;
 }
 
 module.exports = RequestError;
