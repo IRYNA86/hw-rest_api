@@ -34,7 +34,8 @@ userSchema.post("save", handleSchemaValidationErrors);
 const registerSchema = Joi.object({
     email: Joi.string().pattern(emailRegexp).required(),
     password: Joi.string().min(6).required(),
-    repeat_password: Joi.ref("password"),
+    repeat_password: Joi.string().required().valid(Joi.ref('password')),
+    // repeat_password: Joi.ref("password"),
 })
 
 const loginSchema = Joi.object({
